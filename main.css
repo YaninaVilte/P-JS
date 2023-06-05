@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Delius&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 2rem 2rem 2rem 2rem;
+    background: #146C94;
+}
+
+h1 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background: #19A7CE;
+    display: flex;
+    justify-content: center;
+    font-family: 'Permanent Marker', cursive;
+    color: #F6F1F1;
+}
+
+h2 {
+    font-family: 'Shadows Into Light Two', cursive;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    font-family: 'Shadows Into Light Two', cursive;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.opciones {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+button {
+    font-family: 'Delius', cursive;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    border: 3px solid #AFD3E2;
+    padding: 0.3rem;
+    background: #F6F1F1;
+    color: #146C94;
+}
+
+button:hover {
+    background-color: #146C94;
+    color: #F6F1F1;
+    border: 3px solid #19A7CE;
+}
+
+.resultados {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.marcador {
+    background: #AFD3E2;
+    border-radius: 0.8em;
+    color: #F6F1F1;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    text-align: center;
+    width: 2rem;
+}
