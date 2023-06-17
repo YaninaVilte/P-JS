@@ -29,6 +29,14 @@ h2 {
     justify-content: center;
 }
 
+h3 {
+    font-family: 'Shadows Into Light Two', cursive;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+}
+
+
 p {
     font-family: 'Shadows Into Light Two', cursive;
     font-size: 1.3rem;
@@ -40,6 +48,7 @@ p {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 button {
@@ -51,6 +60,8 @@ button {
     padding: 0.3rem;
     background: #F6F1F1;
     color: #146C94;
+    display: flex;
+    justify-content: center;
 }
 
 button:hover {
@@ -73,4 +84,36 @@ button:hover {
     margin-left: 1rem;
     text-align: center;
     width: 2rem;
+}
+
+
+.opciones img {
+    width:50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.resultadoFinal {
+    display: none;
+}
+
+.jugarNuevamente {
+    display: none;
+}
+
+.btn {
+    border: 0;
+    line-height: 1;
+    background-color: var(--clr-beige);
+    color: var(--clr-purple);
+    font-size: 1rem;
+    padding: .5rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.disabled {
+    display: none;
 }

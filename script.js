@@ -1,107 +1,116 @@
-let min = 0;
-let max = 2;
+let marcadorJugador = 0;
+let marcadorYani = 0;
 
-function escogerNumeroRandom(min, max)
-{
-    let numero = Math.round(Math.random()*(max - min) + min);
-    return numero;
-}
+let resultadoGanador = document.querySelector("#resultadoGanador");
+let mensajeOpciones = document.querySelector("#mensajeOpciones");
+let turnoJugador = document.querySelectorAll(".turnoJugador");
 
-let piedra = 0;
-let papel = 1;
-let tijera = 2;
+let turnoYani = document.querySelector("#turnoYani");
+let opcionYani = document.querySelector("#opcionYani");
 
-let opciones = ["Piedra", "Papel", "Tijera"];
+let opcionesElegidas = document.querySelector("#opcionesElegidas");
+let opcionDelJugador = document.querySelector("#opcionDelJugador");
+let opcionDeYani = document.querySelector("#opcionDeYani");
 
-let seleccionUsuario;
-let seleccionRandom = escogerNumeroRandom(0,2);
+let resultadoParcial = document.querySelector("#resultadoParcial");
 
-function seleccionarNumero () {
-    seleccionUsuario = Number(prompt("¡Juguemos al piedra, papel o tijera! \nSelecciona una opción \nPiedra = 0 \nPapel = 1 \nTijera = 2", 0));
-    if ((seleccionUsuario == 0) || (seleccionUsuario == 1) || (seleccionUsuario == 2)) {
-        alert("Elegiste " + opciones[seleccionUsuario]);
+let puntosJugador = document.querySelector("#puntosJugador");
+let puntosYani = document.querySelector("#puntosYani");
+
+let resultadoFinal = document.querySelector("#resultadoFinal");
+let jugarNuevamente = document.querySelector("#jugarNuevamente");
+
+
+
+turnoJugador.forEach(boton => {
+    boton.addEventListener("click", iniciarPartida);
+});
+
+function iniciarPartida (e) {
+
+    let min = 0;
+    let max = 2;
+
+    let opcionRandom = Math.round(Math.random()*(max - min) + min);
+    let opcionJugador = e.currentTarget.id;
+
+    if (opcionRandom === 0) {
+        opcionRandom = "Piedra";
+    } else if (opcionRandom === 1) {
+        opcionRandom = "Papel"
+    } else if (opcionRandom === 2) {
+        opcionRandom = "Tijera"
     }
-    else{
-        alert("El número ingresado no es válido");
-        seleccionUsuario = Number(prompt("¡Juguemos al piedra, papel o tijera! \nSelecciona una opción \nPiedra = 0 \nPapel = 1 \nTijera = 2", 0));
+
+    if (
+        (opcionJugador === "Piedra" && opcionRandom === "Tijera") ||
+        (opcionJugador === "Papel" && opcionRandom === "Piedra") ||
+        (opcionJugador === "Tijera" && opcionRandom === "Papel")
+    ) {
+        ganaJugador();
+    } else if (
+        (opcionJugador === "Piedra" && opcionRandom === "Papel") ||
+        (opcionJugador === "Papel" && opcionRandom === "Tijera") ||
+        (opcionJugador === "Tijera" && opcionRandom === "Piedra")
+    ) {
+        ganaYani();
+    } else {
+        empate();
     }
-    if(seleccionUsuario == piedra)
-    {
-        if(seleccionRandom == piedra)
-        {
-            alert("Dejame pensar 🧠");
-            alert("Listo 💡")
-            alert("Elegiste piedra. \nYani eligió piedra. \n¡Empatamos! 😅");
+
+    opcionDelJugador.innerText = opcionJugador;
+    opcionDeYani.innerText = opcionRandom;
+    opcionYani.innerText = opcionRandom;
+
+    if (marcadorJugador === 3 || marcadorYani === 3) {
+
+        if (marcadorJugador === 3) {
+            resultadoGanador.innerText = "¡Ganaste!"
         }
-        else if(seleccionRandom == papel)
-        {
-            alert("Dejame pensar 🧠");
-            alert("Listo 💡")
-            alert("Elegiste piedra. \nYani eligió papel. \nEl papel envuelve a la piedra, perdiste 😔");
+
+        if (marcadorYani === 3) {
+            resultadoGanador.innerText = "¡Yani ganó el juego!"
         }
-        else if(seleccionRandom == tijera)
-        {
-            alert("Dejame pensar 🧠");
-            alert("Listo 💡")
-            alert("Elegiste piedra. \nYani eligió tijera. \nLa piedra aplasta la tijera. ¡Felicitaciones ganaste! 🥳");
-        }
-    }
-    else if(seleccionUsuario == papel)
-    {
-        if(seleccionRandom == piedra)
-        {
-            alert("Dejame pensar 🧠");
-            alert("Listo 💡")
-            alert("Elegiste papel. \nYani eligió piedra. \nEl papel envuelve a la piedra. ¡Felicitaciones ganaste! 🥳");
-        }
-        else if(seleccionRandom == papel)
-        {
-            alert("Dejame pensar 🧠");
-            alert("Listo 💡")
-            alert("Elegiste papel. \nYani eligió papel. \n¡Empatamos! 😅");
-        }
-        else if(seleccionRandom == tijera)
-        {
-            alert("Dejame pensar 🧠");
-            alert("Listo 💡")
-            alert("Elegiste papel. \nYani eligió tijera. \nLa tijera corta el papel, perdiste 😔");
-        }
-    }
-    else if(seleccionUsuario == tijera)
-    {
-        if(seleccionRandom == piedra)
-        {
-            alert("Dejame pensar 🧠");
-            alert("Listo 💡")
-            alert("Elegiste tijera. \nYani eligió piedra. \nLa piedra aplasta el papel, perdiste 😔");
-        }
-        else if(seleccionRandom == papel)
-        {
-            alert("Dejame pensar 🧠");
-            alert("Listo 💡")
-            alert("Elegiste tijera. \nYani eligió papel. \nLa tijera corta el papel. ¡Felicitaciones ganaste! 🥳");
-        }
-        else if(seleccionRandom == tijera)
-        {
-            alert("Dejame pensar 🧠");
-            alert("Listo 💡")
-            alert("Elegiste tijera. \nYani eligió tijera. \n¡Empatamos! 😅");
-        }
+
+        mensajeOpciones.classList.add("disabled");
+        turnoYani.classList.add("disabled");
+        opcionesElegidas.classList.add("disabled");
+        opcionYani.classList.add("disabled");
+        resultadoParcial.classList.add("disabled");
+        reiniciar.classList.remove("disabled");
+        reiniciar.addEventListener("click", reiniciarJuego);
     }
 }
 
-seleccionarNumero ()
-
-let seguirJugando;
-
-function continuar () {
-    seguirJugando = prompt("¿Seguir jugando? \nSi para seguir jugando \nCualquier letra para salir").toUpperCase();
-    if(seguirJugando === "SI") {
-        seleccionarNumero ();
-    }
-    else {
-        prompt("¡Gracias por tu tiempo!")
-    }
+function ganaJugador() {
+    marcadorJugador++;
+    puntosJugador.innerText = marcadorJugador;
+    resultadoParcial.innerText = "¡Ganaste un punto!"
 }
 
-continuar ()
+function ganaYani() {
+    marcadorYani++;
+    puntosYani.innerText = marcadorYani;
+    resultadoParcial.innerText = "¡Yani gana un punto!"
+}
+
+function empate() {
+    resultadoParcial.innerText = "¡Empate!"
+}
+
+function reiniciarJuego() {
+    reiniciar.classList.add("disabled");
+    mensajeOpciones.classList.remove("disabled");
+    turnoYani.classList.remove("disabled");
+    opcionesElegidas.classList.remove("disabled");
+    opcionYani.classList.remove("disabled");
+    resultadoParcial.classList.remove("disabled");;
+
+    marcadorJugador = 0;
+    marcadorYani = 0;
+    
+    puntosJugador.innerText = marcadorJugador;
+    puntosYani.innerText = marcadorYani;
+
+    resultadoGanador.innerText = "El primero en llegar a 3 puntos gana."
+}
